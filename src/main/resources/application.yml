@@ -1,3 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ec2-23-21-249-224.compute-1.amazonaws.com:5432/dc36e3ssk6klpp
+    username: OVERRIDE
+    password: OVERRIDE
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
+      hibernate.temp.use_jdbc_metadata_defaults: false
+
 eureka:
   client:
     healthcheck:
@@ -12,3 +26,11 @@ endpoints:
     enabled: true
   info:
     enabled: true
+
+---
+spring:
+  profiles: DEV
+  datasource:
+    url: jdbc:postgresql:OPENWMS
+    username: OPENWMS
+    password: OPENWMS

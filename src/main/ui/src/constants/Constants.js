@@ -1,0 +1,1 @@
+export const DISMISS_TIMEOUT = 3000;

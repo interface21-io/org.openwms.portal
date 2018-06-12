@@ -47,7 +47,7 @@ import java.util.UUID;
  * @author <a href="mailto:hscherrer@interface21.io">Heiko Scherrer</a>
  */
 @Entity
-@Table(name = "CORE_VIEW_OBJECT")
+@Table(name = "COR_VIEW_OBJECT")
 @Builder
 @Getter
 @Setter

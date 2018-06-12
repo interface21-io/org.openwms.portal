@@ -1,0 +1,145 @@
+{
+  "name": "portal",
+  "version": "0.1.0",
+  "description": "Portal application",
+  "main": "src/index.js",
+  "author": "Heiko Scherrer (interface21.io)",
+  "homepage": "http://localhost:8080/portal/",
+  "scripts": {
+    "start": "sh -ac '. .env; react-scripts start'",
+    "build": "sh -ac '. .env; react-scripts build'",
+    "build:dev": "sh -ac '. .env; react-scripts build'",
+    "build:local": "sh -ac '. .env.local; react-scripts build'",
+    "build:staging": "REACT_APP_ENV=staging npm run build",
+    "build:production": "REACT_APP_ENV=production npm run build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "postinstall": "./node_modules/.bin/jspm install"
+  },
+  "dependencies": {
+    "@ameba/ameba-js": "^0.1.4",
+    "history": "^4.7.2",
+    "md5": "^2.2.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "^2.2.14",
+    "semantic-ui-react": "^0.77.2",
+    "single-spa": "^3.9.0"
+  },
+  "devDependencies": {
+    "html-dist": "^0.3.2",
+    "jspm": "0.17.0-beta.42",
+    "redux-devtools": "^3.4.1",
+    "uglifyjs": "^2.4.11"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "history": "npm:history@^4.7.2",
+      "jsx": "npm:jsx@^0.9.89",
+      "keycloak-js": "npm:keycloak-js@^3.4.3",
+      "md5": "npm:md5@^2.2.1",
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.25",
+      "prop-types": "npm:prop-types@^15.6.0",
+      "react-redux": "npm:react-redux@5.0.6",
+      "react-router": "npm:react-router@^4.2.0",
+      "react-router-dom": "npm:react-router-dom@^4.2.2",
+      "react-router-redux": "npm:react-router-redux@^5.0.0-alpha.9",
+      "redux-thunk": "npm:redux-thunk@^2.2.0",
+      "semantic-ui-react": "npm:semantic-ui-react@^0.78.3",
+      "single-spa": "npm:single-spa@^3.9.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-preset-react": "npm:babel-preset-react@^6.24.1",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
+      "plugin-babel-runtime": "npm:babel-runtime@^5.8.24"
+    },
+    "peerDependencies": {
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
+      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+      "constants": "npm:jspm-nodelibs-constants@^0.2.0",
+      "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
+      "domain": "npm:jspm-nodelibs-domain@^0.2.0",
+      "events": "npm:jspm-nodelibs-events@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "http": "npm:jspm-nodelibs-http@^0.2.0",
+      "https": "npm:jspm-nodelibs-https@^0.2.0",
+      "module": "npm:jspm-nodelibs-module@^0.2.0",
+      "os": "npm:jspm-nodelibs-os@^0.2.0",
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0",
+      "react": "npm:react@^16.0.0",
+      "react-dom": "npm:react-dom@^16.1.1",
+      "redux": "npm:redux@^3.7.2",
+      "source-map": "npm:source-map@^0.7.2",
+      "stream": "npm:jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "url": "npm:jspm-nodelibs-url@^0.2.0",
+      "util": "npm:jspm-nodelibs-util@^0.2.0",
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0",
+      "zlib": "npm:jspm-nodelibs-zlib@^0.2.0"
+    },
+    "overrides": {
+      "npm:babel-core@5.8.38": {
+        "main": "browser.js",
+        "dependencies": {},
+        "jspmNodeConversion": false,
+        "map": {
+          "regenerator/runtime": "babel-runtime/regenerator/runtime"
+        },
+        "meta": {
+          "browser.js": {
+            "exports": "babel",
+            "format": "global"
+          }
+        }
+      },
+      "npm:babel-runtime@5.8.38": {
+        "main": false,
+        "dependencies": {},
+        "optionalDependencies": {
+          "core-js": "^1.2.0"
+        }
+      },
+      "npm:browserify-zlib@0.1.4": {
+        "dependencies": {
+          "readable-stream": "^2.0.2",
+          "pako": "~0.2.0"
+        },
+        "map": {
+          "_stream_transform": "readable-stream/transform"
+        }
+      },
+      "npm:inherits@2.0.3": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:lodash@4.17.5": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
+      "npm:pbkdf2@3.0.14": {
+        "main": "browser.js"
+      },
+      "npm:safe-buffer@5.1.1": {
+        "browser": "index.js"
+      }
+    }
+  }
+}

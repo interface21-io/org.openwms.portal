@@ -38,7 +38,7 @@ import javax.persistence.Table;
  * @author <a href="mailto:hscherrer@interface21.io">Heiko Scherrer</a>
  */
 @Entity
-@Table(name = "CORE_MENU_ITEM")
+@Table(name = "COR_MENU_ITEM")
 @Builder
 @Getter
 @Setter

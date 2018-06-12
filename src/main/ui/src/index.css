@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.owms-action {
+}
+.owms-menu {
+}
+.owms-header {
+}
+.ui.owms.menu {
+  background-color: #EEEEEE;
+}
+.ui.menu .item{
+  color: #333366;
+}
+.owms-header-menu-item {
+  padding-top: 0.05em!important;
+  padding-bottom: 0.05em!important;
+}
+.owms-header-menu-title {
+  padding-left: 0.05em!important;
+  vertical-align: middle!important;
+  align-items: center;
+}
+
+.owms-header-text-first {
+  padding-left: 2em!important;
+  color: #0055a0!important;
+}
+.owms-header-text {
+  color: #0055a0!important;
+}
+.owms-logo {
+  height: 40px;
+  margin: 5px 5px 5px 22px;
+}
+
+.no-margin {
+  margin: 0!important;
+}
+.pushable {
+  min-height: 100em;
+}
+
+
+.fade-enter {
+  opacity: 0.01;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
