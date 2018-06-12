@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {Dropdown, Image, Menu} from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 import {goto} from "../actions/index";
-import {CONTEXT_PATH} from "../api-config";
+//import {CONTEXT_PATH} from "../api-config";
 import MD5 from 'md5';
 
 class HeaderMenu extends React.Component {
