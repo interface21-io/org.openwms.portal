@@ -10,8 +10,8 @@
     "build": "sh -ac '. .env; react-scripts build'",
     "build:dev": "sh -ac '. .env; react-scripts build'",
     "build:local": "sh -ac '. .env.local; react-scripts build'",
-    "build:staging": "REACT_APP_ENV=staging npm run build",
-    "build:production": "REACT_APP_ENV=production npm run build",
+    "build:staging": "sh -ac '. .env.staging; react-scripts build'",
+    "build:production": "sh -ac '. .env.production; react-scripts build'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "./node_modules/.bin/jspm install"
