@@ -1,0 +1,14 @@
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+endpoints:
+  actuator:
+    enabled: true
+  metrics:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true
+  info:
+    enabled: true

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false">
+
+    <conversionRule conversionWord="tid" converterClass="org.ameba.logging.ThreadIdProvider" />
+
+    <variable scope="context" name="mdcPattern" value="%replace(;%X{MSGKEY};%X{MSGDATA}){';+( |$)', ''}" />
+
+    <property name="LOG_TEMP" value="/tmp" />
+    <property name="MODULE_NAME" value="CORE" />
+    <property name="SERVICE_NAME" value="PORTAL" />
+
+    <include resource="logback-appenders.xml" />
+
+    <logger name="com.netflix" level="WARN"/>
+    <logger name="org.ameba" level="DEBUG"/>
+    <logger name="io.interface21" level="DEBUG"/>
+    <logger name="INTEGRATION_LAYER_EXCEPTION" level="ERROR" />
+    <logger name="SERVICE_LAYER_EXCEPTION" level="ERROR" />
+    <logger name="SERVICE_LAYER_ACCESS" level="DEBUG" />
+    <logger name="PRESENTATION_LAYER_EXCEPTION" level="ERROR" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

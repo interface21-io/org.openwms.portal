@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<configuration>
+		<stop-on-errors>true</stop-on-errors>
+		<date-format>yyyy-MM-dd</date-format>
+		<wildcard>true</wildcard>
+		<custom-converters>
+			<converter type="org.ameba.mapping.LocalDateTimeConverter">
+				<class-a>java.time.LocalDateTime</class-a>
+				<class-b>java.time.LocalDateTime</class-b>
+			</converter>
+        </custom-converters>
+	</configuration>
+
+	<mapping>
+		<class-a>io.interface21.cloud.ui.MenuItemVO</class-a>
+		<class-b>org.openwms.portal.viewobject.impl.MenuItemEO</class-b>
+	</mapping>
+
+	<mapping>
+		<class-a>org.openwms.portal.viewobject.impl.ViewObjectEO</class-a>
+		<class-b>io.interface21.cloud.ui.ViewObjectVO</class-b>
+		<field type="one-way">
+			<a is-accessible="true">pk</a>
+			<b is-accessible="true">pk</b>
+		</field>
+		<field type="one-way">
+			<a is-accessible="true">pKey</a>
+			<b is-accessible="true">uuid</b>
+		</field>
+		<field>
+			<a is-accessible="true">module</a>
+			<b is-accessible="true">module</b>
+		</field>
+		<field>
+			<a is-accessible="true">name</a>
+			<b is-accessible="true">name</b>
+		</field>
+		<field>
+			<a is-accessible="true">desc</a>
+			<b is-accessible="true">desc</b>
+		</field>
+		<field>
+			<a is-accessible="true">version</a>
+			<b is-accessible="true">version</b>
+		</field>
+		<field>
+			<a is-accessible="true">active</a>
+			<b is-accessible="true">active</b>
+		</field>
+		<field>
+			<a is-accessible="true">thumb</a>
+			<b is-accessible="true">thumb</b>
+		</field>
+		<field>
+			<a is-accessible="true">hash</a>
+			<b is-accessible="true">hash</b>
+		</field>
+		<field>
+			<a is-accessible="true">path</a>
+			<b is-accessible="true">path</b>
+		</field>
+		<field>
+			<a is-accessible="true">storeUrl</a>
+			<b is-accessible="true">storeUrl</b>
+		</field>
+		<field>
+			<a is-accessible="true">menuItems</a>
+			<b is-accessible="true">menuItems</b>
+		</field>
+	</mapping>
+</mappings>
