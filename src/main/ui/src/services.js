@@ -13,7 +13,7 @@ export function loadWidgets(onSuccess, onError) {
     .then(response => response.json())
     .then(data => {
         if (data.status) {
-            alert(data.message)
+            //alert(data.message)
         } else {
             onSuccess(data);
         }
