@@ -40,6 +40,15 @@
 				<environment>:staging</environment>
 			</properties>
 		</profile>
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<environment>:production</environment>
+			</properties>
+		</profile>
 	</profiles>
 
 
