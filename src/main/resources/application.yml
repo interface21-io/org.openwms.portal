@@ -12,10 +12,6 @@ spring:
       hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
       hibernate.temp.use_jdbc_metadata_defaults: false
 
-eureka:
-  client:
-    healthcheck:
-      enabled: true
 endpoints:
   actuator:
     enabled: true
