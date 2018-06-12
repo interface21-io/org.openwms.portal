@@ -1,0 +1,15 @@
+{
+  "name": "org.openwms.portal",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
