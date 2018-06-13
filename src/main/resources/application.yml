@@ -11,17 +11,25 @@ spring:
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
       hibernate.temp.use_jdbc_metadata_defaults: false
-
-endpoints:
-  actuator:
-    enabled: true
-  metrics:
-    enabled: true
-    sensitive: false
-  health:
-    enabled: true
-  info:
-    enabled: true
+  cloud:
+    gateway:
+      routes:
+      - id: routing-service
+        uri: https://openwms-routing-service.herokuapp.com/
+        predicates:
+        - Path=/tms
+      - id: receiving
+        uri: https://openwms-receiving.herokuapp.com/
+        predicates:
+        - Path=/orders/receiving
+      - id: shipping
+        uri: https://openwms-shipping.herokuapp.com/
+        predicates:
+        - Path=/orders/receiving
+      - id: picking
+        uri: https://openwms-picking.herokuapp.com/
+        predicates:
+        - Path=/orders/receiving
 
 ---
 spring:
@@ -30,3 +38,22 @@ spring:
     url: jdbc:postgresql:OPENWMS
     username: OPENWMS
     password: OPENWMS
+  cloud:
+    gateway:
+      routes:
+      - id: routing-service
+        uri: http://routing-service
+        predicates:
+        - Path=/tms
+      - id: receiving
+        uri: http://receiving
+        predicates:
+        - Path=/orders/receiving
+      - id: shipping
+        uri: http://shipping
+        predicates:
+        - Path=/orders/receiving
+      - id: picking
+        uri: http://picking
+        predicates:
+        - Path=/orders/receiving
