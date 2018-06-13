@@ -29,7 +29,5 @@ Widgets that are realized with different JavaScript frameworks.
 ---- | -----------
 An example of how applications integrate Widgets into the portal header | The user account menu item is already given by the portal.
 
-
-
 [1]: src/main/docs/images/menu-expanded.png
 [2]: src/main/docs/images/user-menu-expanded.png
