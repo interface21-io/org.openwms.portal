@@ -22,3 +22,14 @@ make them work together.
 - **Global State**. Widgets may need to share data or events. The Portal allows to share
 data globally and has a built-in event propagation mechanism to publish events across
 Widgets that are realized with different JavaScript frameworks.
+
+# Screenshots
+
+![Menu Expanded][1] | ![User Menu Expanded][2]
+---- | -----------
+An example of how applications integrate Widgets into the portal header | The user account menu item is already given by the portal.
+
+
+
+[1]: src/main/docs/images/menu-expanded.png
+[2]: src/main/docs/images/user-menu-expanded.png
