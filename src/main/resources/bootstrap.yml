@@ -1,6 +1,57 @@
 spring:
   application:
     name: portal
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: openwms-config
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  security:
+    basic:
+      enabled: false
+    user:
+      password: sa
+  webflux:
+    static-path-pattern: /ui/**
+  main:
+    web-application-type: reactive
+server:
+  port: ${PORT:8080}
+  use-forward-headers: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:sa@localhost:8761/eureka
+  instance:
+    metadata-map:
+      username: ${spring.security.user.name:user}
+      password: ${spring.security.user.password}
+      protocol: http
+
+---
+spring:
+  profiles: CLOUD
 
 server:
   port: ${PORT:8080}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${OWMS_EUREKA_URL}/eureka
+    instance-info-replication-interval-seconds: 10
+  instance:
+    hostname: ${OWMS_SRV_HOSTNAME}
+    secure-port-enabled: false
+    non-secure-port-enabled: true
+    metadata-map:
+      username: user
+      password: ${SECURITY_USER_PASSWORD}
+      protocol: http
+    non-secure-port: ${PORT:8080}

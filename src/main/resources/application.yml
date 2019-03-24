@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://ec2-23-21-249-224.compute-1.amazonaws.com:5432/dc36e3ssk6klpp
-    username: OVERRIDE
-    password: OVERRIDE
+    url: jdbc:postgresql:OPENWMS
+    username: OPENWMS
+    password: OPENWMS
     driver-class-name: org.postgresql.Driver
   jpa:
     generate-ddl: true
@@ -30,14 +30,9 @@ spring:
         uri: https://openwms-picking.herokuapp.com/
         predicates:
         - Path=/orders/receiving
-
 ---
 spring:
   profiles: DEV
-  datasource:
-    url: jdbc:postgresql:OPENWMS
-    username: OPENWMS
-    password: OPENWMS
   cloud:
     gateway:
       routes:
