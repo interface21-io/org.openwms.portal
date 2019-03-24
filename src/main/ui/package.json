@@ -4,7 +4,7 @@
   "description": "Portal application",
   "main": "src/index.js",
   "author": "Heiko Scherrer (interface21.io)",
-  "homepage": "http://localhost:8080/portal/",
+  "homepage": "http://localhost:8080/ui/",
   "scripts": {
     "start": "sh -ac '. .env; react-scripts start'",
     "build": "sh -ac '. .env; react-scripts build'",
