@@ -5,21 +5,18 @@
 	<parent>
 		<groupId>org.openwms</groupId>
 		<artifactId>org.openwms.parent</artifactId>
-		<version>3</version>
+		<version>6</version>
 		<relativePath />
 	</parent>
 	<artifactId>org.openwms.portal</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>${project.artifactId}</name>
-	<description>UI Portal</description>
+	<name>OpenWMS.org CORE: UI Portal</name>
+	<url>https://www.interface21.io/docs/core/portal/index.html</url>
 
 	<properties>
-		<ameba-cloud.version>2.0-SNAPSHOT</ameba-cloud.version>
-		<ameba-lib.version>2.0-SNAPSHOT</ameba-lib.version>
-		<dozer.version>5.5.1</dozer.version>
+		<ameba-cloud.version>2.0</ameba-cloud.version>
+		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
 		<environment>:production</environment>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-cloud.version>Finchley.M9</spring-cloud.version>
     </properties>
 
 	<profiles>
@@ -55,7 +52,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -86,6 +83,10 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.jolokia</groupId>
+			<artifactId>jolokia-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.dozer</groupId>
@@ -165,80 +166,79 @@
 
 	<build>
 		<finalName>portal</finalName>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>com.github.eirslett</groupId>
-					<artifactId>frontend-maven-plugin</artifactId>
-					<version>1.2</version>
-					<configuration>
-						<installDirectory>target</installDirectory>
-						<workingDirectory>src/main/ui</workingDirectory>
-					</configuration>
-					<executions>
-						<execution>
-							<id>install</id>
-							<goals>
-								<goal>install-node-and-npm</goal>
-							</goals>
-							<configuration>
-								<nodeVersion>v8.1.0</nodeVersion>
-								<npmVersion>5.6.0</npmVersion>
-							</configuration>
-						</execution>
-						<execution>
-							<id>npm install</id>
-							<goals>
-								<goal>npm</goal>
-							</goals>
-							<configuration>
-								<arguments>install</arguments>
-							</configuration>
-						</execution>
-						<execution>
-							<id>npm build</id>
-							<goals>
-								<goal>npm</goal>
-							</goals>
-							<configuration>
-								<arguments>run build${environment}</arguments>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>copy-ui</id>
-							<phase>prepare-package</phase>
-							<goals>
-								<goal>copy-resources</goal>
-							</goals>
-							<configuration>
-								<outputDirectory>${project.build.outputDirectory}/META-INF/resources</outputDirectory>
-								<resources>
-									<resource>
-										<directory>src/main/ui/build</directory>
-										<includes>
-											<include>**</include>
-										</includes>
-									</resource>
-								</resources>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<installDirectory>target</installDirectory>
+					<workingDirectory>src/main/ui</workingDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v8.1.0</nodeVersion>
+							<npmVersion>5.6.0</npmVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run build${environment}</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-ui</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.outputDirectory}/META-INF/resources</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/ui/build</directory>
+									<includes>
+										<include>**</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

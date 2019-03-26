@@ -20,9 +20,18 @@ spring:
     static-path-pattern: /ui/**
   main:
     web-application-type: reactive
+
 server:
   port: ${PORT:8080}
   use-forward-headers: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  file: "/tmp/owms/BOOT-CORE-Portal.log"
 
 eureka:
   client:
