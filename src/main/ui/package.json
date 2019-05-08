@@ -5,6 +5,11 @@
   "main": "src/index.js",
   "author": "Heiko Scherrer (interface21.io)",
   "homepage": "http://localhost:8080/ui/",
+  "license": "Copyright Heiko Scherrer",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/openwms/org.openwms.portal.git"
+  },
   "scripts": {
     "start": "sh -ac '. .env; react-scripts start'",
     "build": "sh -ac '. .env; react-scripts build'",
@@ -19,15 +24,15 @@
   "dependencies": {
     "@ameba/ameba-js": "^0.1.4",
     "auth0-js": "^9.6.1",
+    "connected-react-router": "^5.0.1",
     "history": "^4.7.2",
     "md5": "^2.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -37,8 +42,8 @@
   },
   "devDependencies": {
     "html-dist": "^0.3.2",
-    "jspm": "0.17.0-beta.42",
-    "redux-devtools": "^3.4.1",
+    "jspm": "^0.17.0-beta.49",
+    "redux-devtools": "^3.5.0",
     "uglifyjs": "^2.4.11"
   },
   "jspm": {

@@ -1,7 +1,7 @@
 import * as SRV from '../services'
 import * as types from '../constants/ActionTypes'
 import * as pages from '../constants/LinkPages'
-import {push} from 'react-router-redux'
+import {push} from 'connected-react-router'
 import {ACTIONS} from '@ameba/ameba-js'
 
 export function goto(refs) {

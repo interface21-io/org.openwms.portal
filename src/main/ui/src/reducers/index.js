@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 import * as actions from '../constants/ActionTypes'
-import {routerReducer} from "react-router-redux";
+import {connectRouter} from "connected-react-router";
 import ApiUtils from '../ApiUtils'
 
 function portal(state = [], action) {
@@ -35,11 +35,11 @@ function routes(state = [], action) {
     }
 }
 
-const reducers = combineReducers({
+const reducers = (history) => combineReducers({
     portal,
     activeItem,
     routes,
-    router: routerReducer,
+    router: connectRouter(history)
 });
 
 export default reducers

@@ -6,14 +6,28 @@ import {loadWidgets} from "../actions/index";
 
 class Portal extends Component {
 
+
     componentDidMount() {
+        const { renewSession, isAuthenticated, login } = this.props.auth;
+
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            renewSession();
+        }
+
+        if (!isAuthenticated()) {
+            console.log('Not authenticated');
+            login();
+        }
+
         this.props.fetchWidgets();
     }
 
     render() {
+        const { logout } = this.props.auth;
+
         return (
             <div>
-                <HeaderMenu user={{}} logout={this.props.logout} />
+                <HeaderMenu user={{}} logout={logout} />
                 <ContentPane user={{}} />
             </div>
         );
