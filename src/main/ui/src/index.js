@@ -13,13 +13,38 @@ import registerServiceWorker from "./registerServiceWorker";
 
 import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
+import {
+    Authenticator,
+    ConfirmSignIn,
+    ConfirmSignUp,
+    ForgotPassword,
+    Greetings,
+    Loading,
+    RequireNewPassword,
+    SignUp,
+    TOTPSetup,
+    VerifyContact
+} from 'aws-amplify-react';
+
 
 Amplify.configure({Auth: aws_exports});
 
-const handleAuthentication = (nextState, replace) => {
-};
-
 const app = (
+    <Authenticator
+        hide={
+            [
+                Greetings,
+                ConfirmSignIn,
+                RequireNewPassword,
+                SignUp,
+                ConfirmSignUp,
+                VerifyContact,
+                ForgotPassword,
+                TOTPSetup,
+                Loading
+            ]
+        }
+    >
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <BrowserRouter history={history} component={Portal}>
@@ -27,6 +52,7 @@ const app = (
             </BrowserRouter>
         </ConnectedRouter>
     </Provider>
+    </Authenticator>
 );
 
 ReactDOM.render(

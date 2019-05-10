@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import ContentPane from "./ContentPane";
 import HeaderMenu from "./HeaderMenu";
 import {loadWidgets, resolveUserInfo} from "../actions/index";
-import {withAuthenticator} from 'aws-amplify-react';
 import {Auth} from 'aws-amplify';
 
 class Portal extends Component {
@@ -52,4 +51,4 @@ const mapDispatchToProps = (dispatch) => (
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(withAuthenticator(Portal))
+)((Portal))
