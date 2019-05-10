@@ -3,32 +3,24 @@ import {connect} from 'react-redux'
 import ContentPane from "./ContentPane";
 import HeaderMenu from "./HeaderMenu";
 import {loadWidgets} from "../actions/index";
+import {Authenticator, withAuthenticator} from 'aws-amplify-react';
+import aws_exports from '../aws-exports';
 
 class Portal extends Component {
 
-
     componentDidMount() {
-        const { renewSession, isAuthenticated, login } = this.props.auth;
-
-        if (localStorage.getItem('isLoggedIn') !== 'true') {
-            renewSession();
-        }
-
-        if (!isAuthenticated()) {
-            console.log('Not authenticated');
-            login();
-        }
-
         this.props.fetchWidgets();
     }
 
     render() {
-        const { logout } = this.props.auth;
-
         return (
             <div>
-                <HeaderMenu user={{}} logout={logout} />
-                <ContentPane user={{}} />
+                <Authenticator
+                    amplifyConfig={aws_exports}
+                >
+                    <HeaderMenu user={{}} logout={{}} />
+                    <ContentPane user={{}} />
+                </Authenticator>
             </div>
         );
     }
@@ -53,4 +45,4 @@ const mapDispatchToProps = (dispatch) => (
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Portal)
+)(withAuthenticator(Portal))

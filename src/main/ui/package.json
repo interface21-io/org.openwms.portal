@@ -23,8 +23,9 @@
   },
   "dependencies": {
     "@ameba/ameba-js": "^0.1.4",
-    "amazon-cognito-identity-js": "^3.0.12",
     "auth0-js": "^9.6.1",
+    "aws-amplify": "^1.1.27",
+    "aws-amplify-react": "^2.3.7",
     "aws-sdk": "^2.451.0",
     "connected-react-router": "^5.0.1",
     "history": "^4.7.2",
