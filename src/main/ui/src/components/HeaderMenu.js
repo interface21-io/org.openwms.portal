@@ -18,8 +18,8 @@ class HeaderMenu extends React.Component {
 
         const trigger = (
             <Menu.Item className='owms-header-menu-item item'>
-                <Image src={'https://www.gravatar.com/avatar/'+MD5(/*this.props.user.email*/'bla')+'?d=monsterid&s=200'} avatar/>
-                {/*this.props.user.given_name + ' ' + this.props.user.family_name*/ 'anonymous'}
+                <Image src={'https://www.gravatar.com/avatar/'+MD5(this.props.user.attributes.email ? this.props.user.attributes.email : 'bla')+'?d=monsterid&s=200'} avatar/>
+                {this.props.user.username}
             </Menu.Item>
         );
 
@@ -62,7 +62,7 @@ class HeaderMenu extends React.Component {
                     <Dropdown trigger={trigger} className='item'>
                         <Dropdown.Menu>
                             <Dropdown.Header>
-                                <p><Image src={'https://www.gravatar.com/avatar/'+MD5(/*this.props.user.email*/'bla')+'?d=monsterid&s=120'}/>{/*this.props.user.given_name + ' ' + this.props.user.family_name*/'anonymous'}</p>
+                                <p><Image src={'https://www.gravatar.com/avatar/'+MD5(this.props.user.attributes.email ? this.props.user.attributes.email : 'bla')+'?d=monsterid&s=120'}/>{this.props.user.attributes.given_name}</p>
                             </Dropdown.Header>
                             <Dropdown.Divider/>
                             <Dropdown.Item>Help</Dropdown.Item>

@@ -35,10 +35,20 @@ function routes(state = [], action) {
     }
 }
 
+function user(state = {attributes: {}}, action) {
+    switch (action.type) {
+        case 'USERINFO_RESOLVED':
+            return action.user;
+        default:
+            return state
+    }
+}
+
 const reducers = (history) => combineReducers({
     portal,
     activeItem,
     routes,
+    user,
     router: connectRouter(history)
 });
 

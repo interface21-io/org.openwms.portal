@@ -2,25 +2,28 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import ContentPane from "./ContentPane";
 import HeaderMenu from "./HeaderMenu";
-import {loadWidgets} from "../actions/index";
-import {Authenticator, withAuthenticator} from 'aws-amplify-react';
-import aws_exports from '../aws-exports';
+import {loadWidgets, resolveUserInfo} from "../actions/index";
+import {withAuthenticator} from 'aws-amplify-react';
+import {Auth} from 'aws-amplify';
 
 class Portal extends Component {
 
     componentDidMount() {
+        this.props.init();
         this.props.fetchWidgets();
+    }
+
+    logout() {
+        Auth.signOut()
+            .then()
+            .catch(err => console.log(err));
     }
 
     render() {
         return (
             <div>
-                <Authenticator
-                    amplifyConfig={aws_exports}
-                >
-                    <HeaderMenu user={{}} logout={{}} />
-                    <ContentPane user={{}} />
-                </Authenticator>
+                <HeaderMenu user={this.props.user} logout={this.logout} />
+                <ContentPane user={this.props.user} />
             </div>
         );
     }
@@ -31,11 +34,15 @@ const mapStateToProps = (state, props) => (
         routes: state.routes,
         portal: state.portal,
         visible: true,
+        user: state.user
     }
 );
 
 const mapDispatchToProps = (dispatch) => (
     {
+        init: () => {
+            dispatch(resolveUserInfo())
+        },
         fetchWidgets: () => {
             dispatch(loadWidgets())
         },

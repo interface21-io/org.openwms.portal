@@ -3,6 +3,7 @@ import * as types from '../constants/ActionTypes'
 import * as pages from '../constants/LinkPages'
 import {push} from 'connected-react-router'
 import {ACTIONS} from '@ameba/ameba-js'
+import {Auth} from 'aws-amplify';
 
 export function goto(refs) {
     return (dispatch, getState) => {
@@ -28,6 +29,18 @@ export function loadWidgets() {
                 error: error,
             })
         );
+    }
+}
 
+export function resolveUserInfo() {
+    return (dispatch, getState) => {
+        Auth.currentUserInfo()
+            .then(res => {
+                console.log(res)
+                dispatch({
+                    type: types.USERINFO_RESOLVED,
+                    user: res
+                });
+            })
     }
 }
