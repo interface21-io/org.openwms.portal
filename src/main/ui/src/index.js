@@ -11,48 +11,22 @@ import './index.css';
 import {BrowserRouter} from "react-router-dom";
 import registerServiceWorker from "./registerServiceWorker";
 
+import AmplifyBridge from './AmplifyBridge';
 import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
-import {
-    Authenticator,
-    ConfirmSignIn,
-    ConfirmSignUp,
-    ForgotPassword,
-    Greetings,
-    Loading,
-    RequireNewPassword,
-    SignUp,
-    TOTPSetup,
-    VerifyContact
-} from 'aws-amplify-react';
-
 
 Amplify.configure({Auth: aws_exports});
 
+new AmplifyBridge(store);
+
 const app = (
-    <Authenticator
-        hide={
-            [
-                Greetings,
-                ConfirmSignIn,
-                RequireNewPassword,
-                SignUp,
-                ConfirmSignUp,
-                VerifyContact,
-                ForgotPassword,
-                TOTPSetup,
-                Loading
-            ]
-        }
-    >
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <BrowserRouter history={history} component={Portal}>
-                 <Portal />
-            </BrowserRouter>
-        </ConnectedRouter>
-    </Provider>
-    </Authenticator>
+            <Provider store={store}>
+                <ConnectedRouter history={history}>
+                    <BrowserRouter history={history} component={Portal}>
+                        <Portal />
+                    </BrowserRouter>
+                </ConnectedRouter>
+            </Provider>
 );
 
 ReactDOM.render(

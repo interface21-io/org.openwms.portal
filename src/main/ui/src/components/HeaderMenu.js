@@ -14,12 +14,34 @@ class HeaderMenu extends React.Component {
         this.props.handleItemClick(this.props.portal.widgets.filter(w => w.name === name)[0]);
     };
 
+    _getEmail() {
+        if (this.props.user && this.props.user.attributes) {
+            return ''+this.props.user.attributes.email;
+        }
+        return '';
+    }
+
+    _getUsername() {
+        if (this.props.user && this.props.user.username) {
+            return this.props.user.username;
+        }
+        return '';
+    }
+
+    _getGivenname() {
+        if (this.props.user && this.props.user.attributes) {
+            return ''+this.props.user.attributes.given_name;
+        }
+        return '';
+    }
+    
+
     render() {
 
         const trigger = (
             <Menu.Item className='owms-header-menu-item item'>
-                <Image src={'https://www.gravatar.com/avatar/'+MD5(this.props.user.attributes.email ? this.props.user.attributes.email : 'bla')+'?d=monsterid&s=200'} avatar/>
-                {this.props.user.username}
+                <Image src={'https://www.gravatar.com/avatar/'+MD5(this._getEmail())+'?d=monsterid&s=200'} avatar/>
+                {this._getUsername()}
             </Menu.Item>
         );
 
@@ -62,7 +84,7 @@ class HeaderMenu extends React.Component {
                     <Dropdown trigger={trigger} className='item'>
                         <Dropdown.Menu>
                             <Dropdown.Header>
-                                <p><Image src={'https://www.gravatar.com/avatar/'+MD5(this.props.user.attributes.email ? this.props.user.attributes.email : 'bla')+'?d=monsterid&s=120'}/>{this.props.user.attributes.given_name}</p>
+                                <p><Image src={'https://www.gravatar.com/avatar/'+MD5(this._getEmail())+'?d=monsterid&s=120'}/>{this._getGivenname()}</p>
                             </Dropdown.Header>
                             <Dropdown.Divider/>
                             <Dropdown.Item>Help</Dropdown.Item>
@@ -78,8 +100,6 @@ class HeaderMenu extends React.Component {
 }
 
 HeaderMenu.propTypes = {
-    user: PropTypes.object,
-    routes: PropTypes.array.isRequired,
     logout: PropTypes.func.isRequired,
 };
 
@@ -90,6 +110,7 @@ const mapStateToProps = (state, props) => (
         activeItem: state.activeItem,
         routes: state.routes,
         portal: state.portal,
+        user: state.user
     }
 );
 

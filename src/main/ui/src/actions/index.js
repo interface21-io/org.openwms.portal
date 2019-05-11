@@ -5,6 +5,10 @@ import {push} from 'connected-react-router'
 import {ACTIONS} from '@ameba/ameba-js'
 import {Auth} from 'aws-amplify';
 
+export const SWITCH_USER = 'SWITCH_USER';
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+export const DELETE_PROFILE = 'DELETE_PROFILE';
+
 export function goto(refs) {
     return (dispatch, getState) => {
         dispatch({
@@ -31,6 +35,26 @@ export function loadWidgets() {
         );
     }
 }
+
+// when user updates profile
+export function updateProfile(profile) {
+    return {
+      type: UPDATE_PROFILE,
+      profile
+    }
+  }
+  
+  // when user sign out
+ export function deleteProfile() {
+    return { type: DELETE_PROFILE }
+  }
+
+export function switchUser(user) {
+    return {
+      type: SWITCH_USER,
+      user
+    }
+  }
 
 export function resolveUserInfo() {
     return (dispatch, getState) => {

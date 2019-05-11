@@ -4,6 +4,19 @@ import ContentPane from "./ContentPane";
 import HeaderMenu from "./HeaderMenu";
 import {loadWidgets, resolveUserInfo} from "../actions/index";
 import {Auth} from 'aws-amplify';
+import myAuthTheme from './myAuthTheme';
+import {
+    Authenticator,
+    ConfirmSignIn,
+    ConfirmSignUp,
+    ForgotPassword,
+    Greetings,
+    Loading,
+    RequireNewPassword,
+    SignUp,
+    TOTPSetup,
+    VerifyContact
+} from 'aws-amplify-react';
 
 class Portal extends Component {
 
@@ -19,10 +32,36 @@ class Portal extends Component {
     }
 
     render() {
+        let comp;
+        if (this.props.user && this.props.user.username) {
+            comp = 
+                <div>
+                    <HeaderMenu user={this.props.user} logout={this.logout} />
+                    <ContentPane user={this.props.user} />
+                </div>;
+        } else {
+            comp = <div></div>
+        }
         return (
             <div>
-                <HeaderMenu user={this.props.user} logout={this.logout} />
-                <ContentPane user={this.props.user} />
+                <Authenticator
+                    hide={
+                        [
+                            Greetings,
+                            ConfirmSignIn,
+                            RequireNewPassword,
+                            SignUp,
+                            ConfirmSignUp,
+                            VerifyContact,
+                            ForgotPassword,
+                            TOTPSetup,
+                            Loading
+                        ]
+                    }
+                    theme={myAuthTheme}
+                >
+                {comp}
+                </Authenticator>
             </div>
         );
     }
@@ -33,7 +72,7 @@ const mapStateToProps = (state, props) => (
         routes: state.routes,
         portal: state.portal,
         visible: true,
-        user: state.user
+        user: state.user,
     }
 );
 
