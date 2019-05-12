@@ -4,7 +4,7 @@ import ContentPane from "./ContentPane";
 import HeaderMenu from "./HeaderMenu";
 import {loadWidgets, resolveUserInfo} from "../actions/index";
 import {Auth} from 'aws-amplify';
-import myAuthTheme from './myAuthTheme';
+import loginTheme from './LoginDialogTheme';
 import {
     Authenticator,
     ConfirmSignIn,
@@ -58,7 +58,7 @@ class Portal extends Component {
                             Loading
                         ]
                     }
-                    theme={myAuthTheme}
+                    theme={loginTheme}
                 >
                 {comp}
                 </Authenticator>

@@ -15,24 +15,15 @@ class HeaderMenu extends React.Component {
     };
 
     _getEmail() {
-        if (this.props.user && this.props.user.attributes) {
-            return ''+this.props.user.attributes.email;
-        }
-        return '';
+        return this.props.user.attributes.email;
     }
 
     _getUsername() {
-        if (this.props.user && this.props.user.username) {
-            return this.props.user.username;
-        }
-        return '';
+        return this.props.user.username;
     }
 
     _getGivenname() {
-        if (this.props.user && this.props.user.attributes) {
-            return ''+this.props.user.attributes.given_name;
-        }
-        return '';
+        return this.props.user.attributes.given_name;
     }
     
 

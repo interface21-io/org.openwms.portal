@@ -1,7 +1,5 @@
 import {AmplifyTheme} from 'aws-amplify-react';
 import {I18n} from 'aws-amplify';
-import Background from './openwms_header.png';
-import * as React from 'react';
 
 const authScreenLabels = {
   en: {
@@ -37,12 +35,6 @@ const MyButton = Object.assign({}, AmplifyTheme.button, {
     background: 'lightblue'
 });
 
-const MyFormContainer = Object.assign({}, AmplifyTheme.formContainer, {
-    background: `url(${Background})`,
-    minHeight: document.documentElement.clientHeight,
-    width: document.documentElement.clientWidth,
-    margin: 0,
-})  
 const MyTheme = Object.assign({}, AmplifyTheme, {
   sectionHeader: MySectionHeader,
   sectionFooter: MySectionFooter,
